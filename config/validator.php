@@ -13,32 +13,34 @@ function isNumeric($value){
 function isString($value){
     return is_string($value);
 }
-
-
-function isMail($value){
-    return filter_var($value, FILTER_VALIDATE_EMAIL);
-}   
+   
 
 function validate(array $errors):bool{
     return count($errors)==0;
 }
 
-function validDataProduit(array $data):array{
+function validDataTache(array $data):array{
      $errors = [];
-        if(empty($data["reference"])){
-            $errors["referenceVide"] ="Veuillez remplir la reference";
-        }
         if(empty($data["libelle"])){
-            $errors["libelleVide"] ="Veuillez remplir le libelle";
+            $errors["libelle"] ="Veuillez remplir le libelle";
         }
+        if(empty($data["date_debut"])){
+            $errors["date_debut"] ="Veuillez remplir la date";
+        }
+        if(empty($data["date_fin"])){
+                $errors["date_fin"] ="Veuillez remplir la date";
+            }
         if(empty($data["description"])){
-                $errors["descriptionVide"] ="Veuillez remplir le description";
+            $errors["description"] ="Veuillez remplir la description";
             }
-        if(empty($data["prix"])){
-            $errors["prixVide"] ="Veuillez remplir le prix";
+        if(empty($data["statut"])){
+                $errors["statut"] ="Veuillez remplir le statut";
             }
-        if(empty($data["stock"])){
-                $errors["stockVide"] ="Veuillez remplir le stock";
+        if (!empty($data["date_debut"]) && !empty($data["date_fin"])) {
+            if (strtotime($data["date_fin"]) < strtotime($data["date_debut"])) {
+                $errors["date_fin"] = "La date de fin doit être ultérieure à la date de début";
             }
+        }
+
         return $errors;
 }

@@ -7,7 +7,7 @@ function dd($test)
     die("Yallah pitié");
 }
 
-function loadView(string $view,array $datas=[],string $layout="base") {
+function loadView(string $view,array $datas=[],string $layout="side") {
     ob_start();
     extract($datas);
     require_once(ROOT."view/".$view.".php");
@@ -29,16 +29,3 @@ function countTable(string $table){
    return executeSelect($sql,[],true)["total"];
 }
 
-function isConnected(){
-    return isset($_SESSION["user"]);
-}
-
-function auth(){
-    if (!isConnected()) {
-        redirectTo("auth","login");
-    }
-}
-
-function hasRole(string $role){
-    return $_SESSION["user"]["role"]==$role;
-}

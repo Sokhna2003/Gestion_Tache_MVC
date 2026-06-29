@@ -2,11 +2,10 @@
 $controllers=[
     "tache"=>"tache",
     "dashboard"=>"dashboard",
-    "auth"=>"auth"
 
 ];
 
- $controller=$_REQUEST["controller"]??"auth";
+ $controller=$_REQUEST["controller"]??"tache";
  
  if (array_key_exists($controller, $controllers)) {
      $path=ROOT."controller/".$controllers[$controller]."Controller.php";

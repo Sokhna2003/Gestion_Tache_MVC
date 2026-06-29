@@ -1,13 +1,34 @@
 <?php
 require_once ROOT."/model/dashboardModel.php";
-auth();
-$total_clients=countTable("client");
-$total_commandes=countTable("commande");
-$total_produits=countTable("produit");
-$last3Commandes=get3LastCommandes();
-loadView("dashboard/dashboard",
-["total_clients"=>$total_clients,
-"total_commandes"=>$total_commandes,
-"total_produits"=>$total_produits,
-"last3Commandes"=>$last3Commandes
-]);
+
+$dashboard = function() {
+    $total    = countTable("taches");
+    $enCours  = countTachesEnCours();
+    $terminer = countTachesTerminees();
+
+    $pourcentage = $total > 0 ? round(($terminer / $total) * 100) : 0;
+
+    $recentTaches = get3LastTaches();
+
+    loadView("dashboard/dashboard", [
+        "total"        => $total,
+        "enCours"      => $enCours,
+        "terminer"     => $terminer,
+        "pourcentage"  => $pourcentage,
+        "recentTaches" => $recentTaches
+    ]);
+};
+
+$actions = [
+    "dashboard" => $dashboard
+];
+
+$action = $_REQUEST["action"] ?? "dashboard";
+ 
+if (array_key_exists($action, $actions)) {
+    $actions[$action]();
+} else {
+    http_response_code(404);
+    echo "Action introuvable dans le tableau de bord";
+    exit();
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestion de Commandes — Clients</title>
+  <title>Gestion de Taches</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     .modal { display: none !important; }
@@ -20,17 +20,15 @@
           <a href="<?=path("dashboard","dashboard")?>" class="text-xl font-bold text-indigo-600">📦 GES-COMMANDE</a>
           <div class="hidden sm:flex space-x-4">
             <a href="<?=path("dashboard","dashboard")?>" class="px-3 py-2 rounded-md text-sm font-medium <?=$_REQUEST["controller"]=="dashboard"?"text-indigo-600 bg-indigo-50":"text-gray-600 hover:text-indigo-600 hover:bg-gray-100"?> ">Dashboard</a>
-            <a href="<?=path("client","liste")?>" class="px-3 py-2 rounded-md text-sm font-medium <?=$_REQUEST["controller"]=="client"?"text-indigo-600 bg-indigo-50":"text-gray-600 hover:text-indigo-600 hover:bg-gray-100"?>">Clients</a>
-            <a href="<?=path("produit","liste")?>" class="px-3 py-2 rounded-md text-sm font-medium <?=$_REQUEST["controller"]=="produit"?"text-indigo-600 bg-indigo-50":"text-gray-600 hover:text-indigo-600 hover:bg-gray-100"?>">Produits</a>
-            <a href="<?=path("commande","liste")?>" class="px-3 py-2 rounded-md text-sm font-medium <?=$_REQUEST["controller"]=="commande"?"text-indigo-600 bg-indigo-50":"text-gray-600 hover:text-indigo-600 hover:bg-gray-100"?>">Commandes</a>
+            <a href="<?=path("tache","liste")?>" class="px-3 py-2 rounded-md text-sm font-medium <?=$_REQUEST["controller"]=="client"?"text-indigo-600 bg-indigo-50":"text-gray-600 hover:text-indigo-600 hover:bg-gray-100"?>">Taches</a>
           </div>
         </div>
         <div>
           <p>Bonjour, <strong><?=$_SESSION["user"]["prenom"]?> <?=$_SESSION["user"]["nom"]?></strong></p>
         </div>
-        <div class="flex items-center space-x-4">
+        <!-- <div class="flex items-center space-x-4">
           <a href="<?=path("auth","logout")?>" class="px-3 py-2 rounded-md text-sm font-medium bg-red-600 text-white hover:text-indigo-600 hover:bg-gray-100">Deconnexion</a>
-        </div>
+        </div> -->
       </div>
     </div>
   </nav>

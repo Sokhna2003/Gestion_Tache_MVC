@@ -1,90 +1,75 @@
-
-
-  <!-- En-tête -->
-  <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-    <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Tableau de bord</h2>
-    <p class="mt-1 text-sm text-gray-500">Vue d'ensemble du système de gestion de taches</p>
-  </header>
-
-  <!-- Cartes statistiques -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex items-center space-x-4">
-        <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-xl">👥</div>
-        <div>
-          <p class="text-sm font-medium text-gray-500">Clients</p>
-          <p class="text-2xl font-bold text-gray-900"><?=$total_clients?></p>
-        </div>
-      </div>
-      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex items-center space-x-4">
-        <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-xl">📦</div>
-        <div>
-          <p class="text-sm font-medium text-gray-500">Produits</p>
-          <p class="text-2xl font-bold text-gray-900"><?=$total_produits?></p>
-        </div>
-      </div>
-      <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex items-center space-x-4">
-        <div class="flex-shrink-0 w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center text-amber-600 text-xl">📋</div>
-        <div>
-          <p class="text-sm font-medium text-gray-500">Commandes</p>
-          <p class="text-2xl font-bold text-gray-900"><?=$total_commandes?></p>
-        </div>
-      </div>
+<section class="p-8 space-y-8">
+    <div>
+        <h2 class="text-3xl font-bold text-gray-800">Tableau de Bord</h2>
+        <p class="text-sm text-gray-500 mt-1">Vue d'ensemble de votre productivité et de vos objectifs.</p>
     </div>
-  </section>
 
-  <!-- Accès rapides -->
-  <!-- <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-    <h3 class="text-lg font-semibold text-gray-900 mb-4">Accès rapides</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <a href="<?=path("client","liste")?>" class="block p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition">
-        <span class="text-indigo-600 font-medium">👥 Gérer les clients</span>
-        <p class="text-sm text-gray-500 mt-1">Ajouter, modifier ou supprimer des clients.</p>
-      </a>
-      <a href="<?=path("produit","liste")?>" class="block p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition">
-        <span class="text-indigo-600 font-medium">📦 Gérer les produits</span>
-        <p class="text-sm text-gray-500 mt-1">Ajouter, modifier ou supprimer des produits.</p>
-      </a>
-      <a href="<?=path("commande","liste")?>" class="block p-4 bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md hover:border-indigo-300 transition">
-        <span class="text-indigo-600 font-medium">📋 Gérer les commandes</span>
-        <p class="text-sm text-gray-500 mt-1">Créer et suivre les commandes clients.</p>
-      </a>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-center justify-between">
+            <div class="space-y-1">
+                <span class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Total Tâches</span>
+                <h3 class="text-3xl font-bold text-gray-700"><?= $total ?></h3>
+            </div>
+            <div class="w-12 h-12 bg-blue-50 text-blue-500 rounded-full flex items-center justify-center text-xl">
+                <i class="fa-solid fa-folder-tree"></i>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-center justify-between">
+            <div class="space-y-1">
+                <span class="text-sm font-semibold text-gray-400 uppercase tracking-wider">En Cours</span>
+                <h3 class="text-3xl font-bold text-amber-600"><?= $enCours ?></h3>
+            </div>
+            <div class="w-12 h-12 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center text-xl">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+            </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 flex items-center justify-between">
+            <div class="space-y-1">
+                <span class="text-sm font-semibold text-gray-400 uppercase tracking-wider">Terminées</span>
+                <h3 class="text-3xl font-bold text-green-600"><?= $terminer ?></h3>
+            </div>
+            <div class="w-12 h-12 bg-green-50 text-green-500 rounded-full flex items-center justify-center text-xl">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+        </div>
     </div>
-  </section> -->
 
-  <!-- Dernières commandes -->
-  <!-- <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-12">
-    <h3 class="text-lg font-semibold text-gray-900 mb-4">Dernières commandes</h3>
-    <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-      <div class="overflow-x-auto">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gray-50">
-            <tr>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">N°</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Client</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
-              <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            <?php foreach ($last3Commandes as  $commande) :?>
-            <tr class="hover:bg-gray-50">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><a href="detail.html?id=1" class="text-indigo-600 hover:underline"><?=$commande["id_commande"]?></a></td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"><?=$commande["nom_complet"]?></td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600"><?=$commande["date_commande"]?></</td>
-              <td class="px-6 py-4 whitespace-nowrap"><span class="inline-flex px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-800"><?=$commande["statut"]?></</span></td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-right"><?=$commande["montant_total"]?></</td>
-              
-            </tr>
-           <?php endforeach ?>
-
-          </tbody>
-        </table>
-      </div>
-      <div class="p-4 text-center border-t border-gray-100">
-        <a href="<?=path("commande","liste")?>" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">Voir toutes les commandes →</a>
-      </div>
+    <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 space-y-4">
+        <div class="flex justify-between items-center">
+            <h4 class="font-bold text-gray-700">Progression globale de vos objectifs</h4>
+            <span class="text-sm font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full"><?= $pourcentage ?>% Réussi</span>
+        </div>
+        <div class="w-full bg-gray-100 rounded-full h-4 overflow-hidden">
+            <div class="bg-[#00A8CC] h-4 rounded-full transition-all duration-500" style="width: <?= $pourcentage ?>%"></div>
+        </div>
     </div>
-  </section> -->
 
+    <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+        <div class="p-6 border-b border-gray-50 flex justify-between items-center">
+            <h4 class="font-bold text-gray-700">Tâches récemment ajoutées</h4>
+            <a href="<?= path("tache","liste") ?>" class="text-xs font-semibold text-[#00A8CC] hover:text-[#0092B0] transition">Voir tout →</a>
+        </div>
+        <div class="divide-y divide-gray-50">
+            <?php if(empty($recentTaches)): ?>
+                <p class="p-6 text-center text-sm text-gray-400">Aucune activité récente.</p>
+            <?php else: ?>
+                <?php foreach($recentTaches as $tache): ?>
+                    <div class="p-4 flex items-center justify-between hover:bg-gray-50/50 transition">
+                        <div class="flex items-center space-x-4">
+                            <span class="w-2.5 h-2.5 rounded-full <?= $tache['statut'] === 'Terminee' ? 'bg-green-500' : 'bg-amber-500' ?>"></span>
+                            <div>
+                                <p class="text-sm font-bold text-gray-700"><?= htmlspecialchars($tache['libelle']) ?></p>
+                                <p class="text-xs text-gray-400">Échéance : <?= htmlspecialchars($tache['date_fin']) ?></p>
+                            </div>
+                        </div>
+                        <a href="<?= path("tache","detail") ?>&id=<?= $tache['id_tache'] ?>" class="text-gray-400 hover:text-blue-500 transition">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>

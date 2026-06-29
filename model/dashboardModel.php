@@ -1,6 +1,18 @@
 <?php
 require_once(ROOT."bd/database.php");
-function get3LastCommandes(){
-$sql="SELECT cd.*, CONCAT(c.prenom,' ',c.nom) as nom_complet FROM commande cd JOIN client c ON cd.id_client=c.id_client ORDER BY cd.date_commande DESC LIMIT 3";
-return executeSelect($sql);
+
+function countTachesEnCours(): int {
+    $sql = "SELECT COUNT(*) as total FROM taches WHERE statut = 'En cours'";
+    return (int)executeSelect($sql, [], true)["total"];
+}
+
+function countTachesTerminees(): int {
+    $sql = "SELECT COUNT(*) as total FROM taches WHERE statut = 'Terminee'";
+    return (int)executeSelect($sql, [], true)["total"];
+}
+
+
+function get3LastTaches(){
+    $sql="SELECT * FROM taches ORDER BY created_at DESC LIMIT 3";
+    return executeSelect($sql);
 }

@@ -4,7 +4,7 @@ function openConnexion() {
     $con = null;
 try
 {
-    $con = new PDO('mysql:host=localhost;dbname=gestion_commande_l2E221_25_26;charset=utf8', 'root', '');
+    $con = new PDO('mysql:host=localhost;dbname=gestion_taches;charset=utf8', 'root', '');
     $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $con->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $con;
@@ -35,7 +35,7 @@ function executeSelect(string $sql,array $data=[],$one=false) {
 
 function executeUpdate(string $sql,array $data){
     $conn=openConnexion();
-        $statement = $conn->prepare($sql);
-        $statement->execute($data);
+    $statement = $conn->prepare($sql);
+    $statement->execute($data);
    closeConnexion($conn);
 }
